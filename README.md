@@ -160,7 +160,7 @@ Response body:
 ---
 
 3. GET Request - Fetch Employee Node based on name property:
-`$ CURL 127.0.0.1:8000/get-node-by-name/Rob%2Piombino`
+`$ CURL 127.0.0.1:8000/get-node-by-name/Rob`
 
 Response body:
 
