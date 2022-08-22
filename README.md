@@ -124,10 +124,6 @@ Response body:
   {
     "name": "Ken Kane",
     "emp_id": 2
-  },
-  {
-    "name": "test1",
-    "emp_id": "3"
   }
 ]
 ```
