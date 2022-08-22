@@ -1,0 +1,6 @@
+.env
+.venv/
+.vscode/*
+__pychace__/*
+.DS_Store
+app/config.py
