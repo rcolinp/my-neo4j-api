@@ -213,7 +213,7 @@ style="float: left; margin-right: 15px;"/>
 
 ---
 
-#### Pull Docker Image from Docker Hub
+#### Containerize && Build the FastAPI app with Docker AND/OR Pull Docker Image from Docker Hub
 
 `docker pull rcolinp/my-neo4j-api:latest`
 
@@ -222,3 +222,16 @@ Run the docker image with `docker run`:
 `docker run -d -p 80:80 rcolinp/my-neo4j-api:latest`
 
 Navigate to `http://0.0.0.0:8000/docs` && `http://0.0.0.0:8000/redoc`
+
+#### Build the Container
+
+`docker build -t my-neo4j-api:0.1 .`
+
+Then you can run the container, passing in a name for the container, and the previously used tag:
+`docker run -p 8000:8000 --name my-neo4j-api my-neo4j-api:0.1` 
+
+Note: if you used the code as-is (with the `--reload` option), you won't be able to kill the container using `CTRL + C`.
+To kill the container, open another terminal window and kill the container using Docker's kill command:
+`docker kill my-neo4j-api`.
+
+
