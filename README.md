@@ -102,6 +102,19 @@ What you'll need:
 
 - [Alternative API docs](http://127.0.0.1:8000/redoc) is also provided out-of-the-box. Redoc is an open-source tool that generates API documentation from OpenAPI specifications.
 
+Lastly, it's worth noting that when creating a new Employee node, the `CREATE` Cypher statement is used: (see below)
+
+```cypher
+"CREATE (employee:Employee {name:$name,emp_id:$emp_id} ) " \
+"RETURN employee.name AS name, employee.emp_id as emp_id;"
+```
+
+This creates a new Employee node for each invocation, so without applying a unique property contraint, duplicate Employee Nodes may be created unintentionally. To prevent this, you can set a constraint on the `emp_id` for Employee Nodes to be unique by running this Cypher statement in your Neo4j instance:
+
+```cypher
+CREATE CONSTRAINT ON (e:Employee) ASSERT e.emp_id IS UNIQUE;
+```
+
 ### API Request Examples
 
 ---
