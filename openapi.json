@@ -1,0 +1,255 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Rob's REST API Assignment",
+        "description": "REST API built for Neo4j with FastAPI & Neo4j",
+        "version": "0.1"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Home",
+                "operationId": "home__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get-all-nodes": {
+            "get": {
+                "summary": "Return all Employee nodes to client as JSON object",
+                "description": "Retrieve all Employee Nodes from Neo4j",
+                "operationId": "get_all_nodes_get_all_nodes_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get-node-by-id/{emp_id}": {
+            "get": {
+                "summary": "Get Node By Id",
+                "operationId": "get_node_by_id_get_node_by_id__emp_id__get",
+                "parameters": [
+                    {
+                        "description": "The employee's AND/OR candidate employee's employee ID at Neo4j Inc.",
+                        "required": true,
+                        "schema": {
+                            "title": "Emp Id",
+                            "type": "integer",
+                            "description": "The employee's AND/OR candidate employee's employee ID at Neo4j Inc."
+                        },
+                        "name": "emp_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/get-node-by-name/{name}": {
+            "get": {
+                "summary": "Get Node By Name",
+                "operationId": "get_node_by_name_get_node_by_name__name__get",
+                "parameters": [
+                    {
+                        "description": "The employee's AND/OR candidate employee's name at Neo4j Inc.",
+                        "required": true,
+                        "schema": {
+                            "title": "Name",
+                            "type": "string",
+                            "description": "The employee's AND/OR candidate employee's name at Neo4j Inc."
+                        },
+                        "name": "name",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/search": {
+            "get": {
+                "summary": "Get Search",
+                "operationId": "get_search_search_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Search Term",
+                            "type": "string"
+                        },
+                        "name": "search_term",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/create-node": {
+            "post": {
+                "summary": "Create Node",
+                "operationId": "create_node_create_node_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Neo4jNode"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "Neo4jNode": {
+                "title": "Neo4jNode",
+                "required": [
+                    "name",
+                    "emp_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "emp_id": {
+                        "title": "Emp Id",
+                        "type": "integer"
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
