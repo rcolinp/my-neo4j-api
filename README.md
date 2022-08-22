@@ -212,4 +212,4 @@ Run the docker image with `docker run`:
 
 `docker run -d -p 80:80 rcolinp/my-neo4j-api:latest`
 
-Navigate to `http://0.0.0.0:8000/docs`
+Navigate to `http://0.0.0.0:8000/docs` && `http://0.0.0.0:8000/redoc`
