@@ -133,6 +133,7 @@ Response body:
 ```
 
 ---
+
 2. GET Request - Fetch Employee Node based on emp_id property:
 `$ CURL 127.0.0.1:8000/get-node-by-id/1`
 
@@ -148,6 +149,7 @@ Response body:
 ```
 
 ---
+
 3. GET Request - Fetch Employee Node based on name property:
 `$ CURL 127.0.0.1:8000/get-node-by-name/Rob%2Piombino`
 
@@ -163,6 +165,7 @@ Response body:
 ```
 
 ---
+
 4. POST Request - Create an Employee Node in Neo4j
 
 ```shell
@@ -200,3 +203,13 @@ Response body:
 style="float: left; margin-right: 15px;"/>
 
 ---
+
+#### Pull Docker Image from Docker Hub
+
+`docker pull rcolinp/my-neo4j-api:latest`
+
+Run the docker image with `docker run`:
+
+`docker run -d -p 80:80 rcolinp/my-neo4j-api:latest`
+
+Navigate to `http://0.0.0.0:8000/docs`
