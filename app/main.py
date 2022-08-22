@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import uvicorn
 from typing import Optional
+
+import uvicorn
 from fastapi import FastAPI, Path
 from neo4j import GraphDatabase, basic_auth
 from pydantic import BaseModel
-from . import config as conf # import config from config.py
+
+from . import config as conf  # import config from config.py
 
 # Load contens from config.py file
 uri = conf.uri
